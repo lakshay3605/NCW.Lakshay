@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Constitutional Provisions - Empower Hub</title>
+    <title>Sexual Offences Against Women - Empower Hub</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
@@ -26,8 +26,8 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="indian-constitution-women.html">Constitution & Women</a></li>
-                    <li><a href="#" class="active">Constitutional Provisions</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="#" class="active">Sexual Offences</a></li>
                 </ul>
             </nav>
         </div>
@@ -36,40 +36,56 @@
     <main id="main">
         <section class="page-header">
             <div class="container">
-                <a href="indian-constitution-women.html" class="back-btn">
+                <a href="index.html" class="back-btn">
                     <span class="material-icons-outlined">arrow_back</span>
-                    Back to Constitution & Women
+                    Back to Home
                 </a>
-                <h1>Constitutional Provisions</h1>
-                <p>Key provisions ensuring women's welfare and legal support</p>
+                <h1>Sexual Offences Against Women</h1>
+                <p>Legal provisions and protections against sexual crimes under Indian law</p>
             </div>
         </section>
 
         <section class="content-section">
             <div class="container">
-                <div class="provisions-grid">
-                    <div class="provision-card">
-                        <h3>Adequate Means of Livelihood</h3>
-                        <p>Constitutional provisions ensuring women have access to adequate means of livelihood and economic security.</p>
-                        <a href="#" class="btn btn-outline">Explore Details</a>
-                    </div>
-
-                    <div class="provision-card">
-                        <h3>Equal Justice and Free Legal Aid</h3>
-                        <p>Access to justice and free legal aid services for women who cannot afford legal representation.</p>
+                <div class="articles-grid">
+                    <div class="article-card">
+                        <h3>Rape and Sexual Assault</h3>
+                        <p>Comprehensive legal framework addressing rape, sexual assault, and related offences with stringent punishments and victim protection measures.</p>
                         <div class="sub-topics">
-                            <a href="#" class="sub-link">Objectives of Legal Service Authorities</a>
-                            <a href="#" class="sub-link">Institutions for Free Legal Services</a>
-                            <a href="#" class="sub-link">Eligibility for Free Legal Services</a>
-                            <a href="#" class="sub-link">Application Procedure</a>
+                            <a href="#" class="sub-link">Definition and Types</a>
+                            <a href="#" class="sub-link">Punishment Provisions</a>
+                            <a href="#" class="sub-link">Victim Protection</a>
                         </div>
-                        <a href="#" class="btn btn-outline">Learn More</a>
                     </div>
 
-                    <div class="provision-card">
-                        <h3>Maternity Relief</h3>
-                        <p>Constitutional provisions and policies ensuring maternity benefits and support for working women.</p>
-                        <a href="#" class="btn btn-outline">View Benefits</a>
+                    <div class="article-card">
+                        <h3>Sexual Harassment</h3>
+                        <p>Laws protecting women from sexual harassment at workplace and public spaces, including the POSH Act and related provisions.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Workplace Harassment</a>
+                            <a href="#" class="sub-link">Public Space Harassment</a>
+                            <a href="#" class="sub-link">Complaint Mechanisms</a>
+                        </div>
+                    </div>
+
+                    <div class="article-card">
+                        <h3>Stalking and Voyeurism</h3>
+                        <p>Legal provisions against stalking, voyeurism, and invasion of privacy with focus on digital and physical harassment.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Physical Stalking</a>
+                            <a href="#" class="sub-link">Cyber Stalking</a>
+                            <a href="#" class="sub-link">Voyeurism Laws</a>
+                        </div>
+                    </div>
+
+                    <div class="article-card">
+                        <h3>Acid Attacks</h3>
+                        <p>Specific laws addressing acid attacks on women, including prevention, punishment, and victim compensation measures.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Prevention Measures</a>
+                            <a href="#" class="sub-link">Legal Punishment</a>
+                            <a href="#" class="sub-link">Victim Compensation</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -115,18 +131,27 @@
                 activeBtn.style.transform = 'scale(1.1)';
             }
             
+            if (typeof changeLanguage === 'function') {
+                changeLanguage(lang);
+            }
+            
             localStorage.setItem('selectedLanguage', lang);
         }
         
         document.addEventListener('DOMContentLoaded', function() {
-            const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-            translatePage(savedLang);
-            
             // Load saved theme
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-theme');
             }
+            
+            // Load saved language
+            setTimeout(() => {
+                const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+                if (typeof translatePage === 'function') {
+                    translatePage(savedLang);
+                }
+            }, 100);
         });
         
         function toggleTheme() {
